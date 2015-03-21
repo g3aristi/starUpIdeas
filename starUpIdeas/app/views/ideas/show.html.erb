@@ -1,18 +1,25 @@
-<p>
-  <strong>Title:</strong>
-  <%= @idea.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @idea.description %>
-</p>
+<li id="idea-<%= idea.id %>">
+  <%= link_to gravatar_for(idea.user, size: 50), idea.user %>
+  <span class="user"><%= link_to idea.user.name, idea.user %></span>
+  <p>
+	<strong>Title:</strong>
+	<%= @idea.title %>
+  </p>
+	 
+  <p>
+	<strong>Text:</strong>
+	<%= @idea.description %>
+  </p>
 
-<h2>Comments</h2>
-<%= render @idea.comments %>
+  <h2>Comments</h2>
+  <%= render @idea.comments %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
 
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(idea.created_at) %> ago.
+  </span>
+</li>
 <%= link_to 'Back to Ideas', ideas_path %>
 <%= link_to 'Edit Idea', edit_idea_path(@idea) %>

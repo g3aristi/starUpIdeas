@@ -6,5 +6,7 @@ class CreateIdeas < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_foreign_key :ideas, :users
+    add_index :ideas, [:user_id, :created_at]
   end
 end

@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+	before_action :logged_in_user, only: [:create, :destroy]
 	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
 	def index
@@ -18,13 +19,13 @@ class IdeasController < ApplicationController
 	end
 
 	def create
-	  @idea = Idea.new(idea_params)
-	 
-		if @idea.save
-    		redirect_to @idea # redirect_to: tells the browser to issue another request.
-  		else
-    		render 'new' # same request is used as the form submission
-  		end
+	  @idea = current_user.ideas.build(idea_params)
+	  if @idea.save
+	  	flash[:success] = "Idea created!"
+    	redirect_to @idea # redirect_to: tells the browser to issue another request.
+  	  else
+    	render 'new' # same request is used as the form submission
+  	  end
 	end
 
 	def update
