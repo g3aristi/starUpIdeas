@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
 	before_action :logged_in_user, only: [:create, :destroy]
-	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+	#http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
 	def index
     	@ideas = Idea.all
