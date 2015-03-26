@@ -21,17 +21,15 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select(:category, options_for_select([['Health', 'Health'], ['Technology', 'Technology'], ['Education', 'Education'], ['Finance', 'Finance'], ['travel', 'Travel']])) %>
   </div>
   <div class="field">
     <%= f.label :tags %><br>
     <%= f.text_field :tags %>
   </div>
-  <!-- <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div> -->
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br>
 <% end %>
