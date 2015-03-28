@@ -1,7 +1,16 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  #before_action :set_idea, only: [:show, :new, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   
+  def search
+    if params[:search].present?
+      @ideas = Idea.search(params[:search])
+    else
+      @ideas = Idea.all
+    end
+  end
+    
+  end
   def index
     @ideas = Idea.all
   end
@@ -51,6 +60,7 @@ class IdeasController < ApplicationController
   end
 
   private
+
     def set_idea
       @idea = Idea.find(params[:id])
     end
@@ -58,4 +68,5 @@ class IdeasController < ApplicationController
     def idea_params
       params.require(:idea).permit(:title, :description, :category, :tags)
     end
-end
+
+# end
