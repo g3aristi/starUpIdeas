@@ -19,6 +19,7 @@
             <h3><%= idea.industry %></h3>
           </div> 
         </div>
+        <p>Description:</p>
         <p><%= idea.description %></p>
         <% if user_signed_in? %>
           <%= link_to 'Check Idea', idea, class: "btn btn-primary btn-lg" %>
