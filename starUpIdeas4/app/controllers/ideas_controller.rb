@@ -2,6 +2,18 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   
+  def date
+    @ideas = Idea.all
+  end
+
+  def search
+    if params[:search].present?
+      @ideas = Idea.search(params[:search])
+    else
+      @ideas = Idea.all
+    end
+  end
+
   def index
     @ideas = Idea.all
   end
