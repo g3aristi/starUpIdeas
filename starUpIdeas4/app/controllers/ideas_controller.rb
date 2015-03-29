@@ -2,6 +2,10 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
   
+  def piechart
+    @ideas = Idea.all
+  end
+
   def date
     @ideas = Idea.all
   end
