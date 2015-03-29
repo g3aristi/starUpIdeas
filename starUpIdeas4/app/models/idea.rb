@@ -1,5 +1,5 @@
 class Idea < ActiveRecord::Base
   acts_as_votable
-  searchkick
+  searchkick autocomplete: ['title']
   belongs_to :user
 end
