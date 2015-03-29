@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'piechart/show'
+
   devise_for :users
 
   resources :ideas do
