@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
   
   def date
@@ -60,6 +60,16 @@ class IdeasController < ApplicationController
       format.html { redirect_to ideas_url, notice: 'Idea was successfully deleted.' }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @idea.upvote_by current_user
+    redirect_to @idea
+  end
+
+  def downvote
+    @idea.downvote_by current_user
+    redirect_to @idea
   end
 
   private
