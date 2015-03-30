@@ -31,9 +31,10 @@
         </div>
         <p>Description:</p>
         <p><%= idea.description %></p>
+        <p>Tags: <%= idea.tags %> </p>
         <div class="col-md-12">
             <p><%= idea.get_likes.size %> Likes </p>
-          </div> 
+        </div>
         <% if user_signed_in? %>
           <%= link_to 'Check Idea', idea, class: "btn btn-primary btn-lg" %>
           <%= link_to 'Delete Idea', idea, class: "btn btn-primary btn-lg" , method: :delete, data: { confirm: 'Are you sure?' } %>

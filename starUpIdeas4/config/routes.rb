@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   end
 
   root 'ideas#index'
+  
 end

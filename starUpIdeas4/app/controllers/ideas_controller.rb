@@ -2,6 +2,11 @@ class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
   
+  def autocomplete
+    render json: Idea.search(params[:search], autocomplete: true).map(&title)    
+  end
+
+
   def piechart
     @ideas = Idea.all
   end
